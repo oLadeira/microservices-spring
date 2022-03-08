@@ -1,13 +1,13 @@
-package com.lucasladeira;
+package br.com.lucas;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MicroservicesSpringApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MicroservicesSpringApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
