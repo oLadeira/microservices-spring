@@ -3,23 +3,44 @@ package br.com.lucasladeira.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
-import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name="cambio")
 public class Cambio implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private UUID id;
-	private String from;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(name = "from_currency", nullable = false, length = 3)
+	private String from; //palavra reservada
+	
+	@Column(name = "to_currency", nullable = false, length = 3)
 	private String to;
+	
+	@Column(nullable = false)
 	private BigDecimal conversionFactor;
+	
+	@Transient //atributo nao sera persistido na base
 	private BigDecimal convertedValue;
+	
+	@Transient
 	private String environment;
 	
 
 	public Cambio() {}
 
-	public Cambio(UUID id, String from, String to, BigDecimal conversionFactor, BigDecimal convertedValue,
+	public Cambio(Long id, String from, String to, BigDecimal conversionFactor, BigDecimal convertedValue,
 			String environment) {
 		super();
 		this.id = id;
@@ -30,11 +51,11 @@ public class Cambio implements Serializable{
 		this.environment = environment;
 	}
 
-	public UUID getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
