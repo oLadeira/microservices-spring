@@ -22,7 +22,7 @@ public class GreetingController {
 	private GreetingConfiguration configuration;
 
 	@GetMapping
-	public Greeting greeting(@RequestParam(value="name", defaultValue = "World")String name) {
+	public Greeting greeting(@RequestParam(value="name", defaultValue = "")String name) {
 		if (name.isEmpty()) name = configuration.getDefaultValue();
 		
 		return new Greeting(
