@@ -11,6 +11,7 @@ public class Cambio implements Serializable{
 	private String from; 
 	private String to;
 	private Double conversionFactor;
+	
 	private Double convertedValue;
 	private String environment;
 	
