@@ -1,7 +1,6 @@
 package br.com.lucasladeira.entities;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 
@@ -14,7 +13,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity(name = "book")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +33,7 @@ public class Book implements Serializable{
 	private Date launchDate;
 	
 	@Column(nullable = false)
-	private BigDecimal price;
+	private Double price;
 	
 	@Column(nullable = false, length = 250)
 	private String title;
@@ -45,7 +47,7 @@ public class Book implements Serializable{
 	
 	public Book() {}
 
-	public Book(Long id, String author, String title, Date launchDate, BigDecimal price, String currency,
+	public Book(Long id, String author, String title, Date launchDate, Double price, String currency,
 			String environment) {
 		super();
 		this.id = id;
@@ -82,11 +84,11 @@ public class Book implements Serializable{
 		this.launchDate = launchDate;
 	}
 
-	public BigDecimal getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
