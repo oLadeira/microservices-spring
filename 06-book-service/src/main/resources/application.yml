@@ -5,6 +5,7 @@ resilience4j:  retry:    instances:      default:
         max-attempts: 5
       foo-bar:
         max-attempts: 4
+        wait-duration: 4s
 spring:  application:    name: book-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
