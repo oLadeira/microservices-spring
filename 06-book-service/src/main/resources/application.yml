@@ -1,7 +1,10 @@
 server:
   port: 8100
 eureka:  client:    service-url:      defaultZone: http://localhost:8761/eureka
-resilience4j:  retry:    instances:      default:
+resilience4j:
+  ratelimiter:    instances:      default: 
+        limit-for-period: 2
+        limit-refresh-period: 10s #em 10 segundos posso fazer duas requisicoes  retry:    instances:      default:
         max-attempts: 5
       foo-bar:
         max-attempts: 4
