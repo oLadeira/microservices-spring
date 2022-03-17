@@ -31,3 +31,5 @@ spring:  application:    name: book-service
     password: 1234
   jackson:
     default-property-inclusion: non-null    serialization:      fail-on-empty-beans: false
+springdoc:
+  show-actuator: true  api-docs:    path: book-service/v3/api-docs
