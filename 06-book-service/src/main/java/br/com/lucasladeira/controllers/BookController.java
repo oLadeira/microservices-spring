@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.lucasladeira.entities.Book;
 import br.com.lucasladeira.proxy.CambioProxy;
 import br.com.lucasladeira.repositories.BookRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Book endpoint") //swagger
 @RestController
 @RequestMapping("/book-service")
 public class BookController {
@@ -24,6 +27,7 @@ public class BookController {
 	@Autowired
 	private CambioProxy cambioProxy;
 	
+	@Operation(summary = "Find a specific book by your id") //swagger
 	@GetMapping(value = "/{id}/{currency}")
 	public Book getBookById(@PathVariable("id") Long id,
 							@PathVariable("currency") String currency) {
